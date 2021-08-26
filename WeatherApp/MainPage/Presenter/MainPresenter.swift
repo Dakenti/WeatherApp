@@ -7,12 +7,17 @@
 
 import Foundation
 
-protocol MainPresantable: NSObjectProtocol {
+protocol MainPresanterOutput: NSObjectProtocol {
     func setCurrentWeather(_ weather: WeatherModel)
+    func setWeatherCondition(imageName: String)
+    func getWeatherConditionText(_ text: String)
 }
 
-protocol MainPresenterProtocol {
-    func getCurrentWeather()
+protocol MainPresenterInput {
+    func getCurrentWeatherByLocation()
+    func getCurrentWeatherByCityName(cityName: String)
+    func getWeatherCondition(condition: Int)
+    func getWeatherConditionText(temperature: Double)
 }
 
 class MainPresenter {
@@ -20,51 +25,74 @@ class MainPresenter {
     private var networkManager: NetworkManager = NetworkManager.shared
     private var locationManager: LocationManager = LocationManager.shared
     
-    private weak var controller: MainPresantable!
+    private weak var controller: MainPresanterOutput!
 
-    init(controller: MainPresantable) {
+    init(controller: MainPresanterOutput) {
         self.controller = controller
     }
 }
 
-extension MainPresenter: MainPresenterProtocol {
-    
-    func getCurrentWeather() {
+extension MainPresenter: MainPresenterInput {
+        
+    func getCurrentWeatherByLocation() {
         locationManager.getCurrentLocation = { [weak self] (latitude, longitude) in
-            self?.networkManager.getCurrentWeather(latitude: latitude, longitude: longitude) { weather in
+            self?.networkManager.getCurrentWeatherByLocation(latitude: latitude, longitude: longitude) { weather in
                 self?.controller.setCurrentWeather(weather)
             }
+        }
+    }
+    
+    func getCurrentWeatherByCityName(cityName: String) {
+        networkManager.getCurrentWeatherByCityName(cityName: cityName) { [weak self] weather in
+            self?.controller.setCurrentWeather(weather)
         }
     }
 }
 
 extension MainPresenter {
-    func updateWeatherIcon(condition: Int) -> String {
+    
+    func getWeatherCondition(condition: Int) {
+        var weatherCondition: String = ""
         switch (condition) {
         case 0...300 :
-            return "tstorm1"
+            weatherCondition = "tstorm1"
         case 301...500 :
-            return "light_rain"
+            weatherCondition = "light_rain"
+            controller.getWeatherConditionText("Is it rain or angels are crying???")
         case 501...600 :
-            return "shower3"
+            weatherCondition = "shower3"
         case 601...700 :
-            return "snow4"
+            weatherCondition = "snow4"
         case 701...771 :
-            return "fog"
+            weatherCondition = "fog"
         case 772...799 :
-            return "tstorm3"
+            weatherCondition = "tstorm3"
         case 800 :
-            return "sunny"
+            weatherCondition = "sunny"
         case 801...804 :
-            return "cloudy2"
+            weatherCondition = "cloudy2"
         case 900...903, 905...1000 :
-            return "tstorm3"
+            weatherCondition = "tstorm3"
         case 903 :
-            return "snow5"
+            weatherCondition = "snow5"
         case 904 :
-            return "sunny"
+            weatherCondition = "sunny"
         default :
-            return "dunno"
+            weatherCondition = "dunno"
         }
+        
+        controller.setWeatherCondition(imageName: weatherCondition)
+    }
+    
+    func getWeatherConditionText(temperature: Double) {
+        var text = ""
+        if temperature < 0 {
+            text = "it is cold, brrr!"
+        } else if temperature >= 0 && temperature <= 15 {
+            text = "I don't like it but it's OK outside."
+        } else if temperature > 15 {
+            text = "Let's go outside and walk..."
+        }
+        controller.getWeatherConditionText(text)
     }
 }

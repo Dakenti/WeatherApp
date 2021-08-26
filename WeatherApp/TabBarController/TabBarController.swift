@@ -12,9 +12,10 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setTransparentTabbar()
         delegate = self
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -29,6 +30,12 @@ class TabBarController: UITabBarController {
         let controllers = [mainVC, forecastVC]
         
         self.viewControllers = controllers
+    }
+    
+    func setTransparentTabbar() {
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().shadowImage     = UIImage()
+        UITabBar.appearance().clipsToBounds   = true
     }
 }
 

@@ -20,6 +20,7 @@
 		2E4AD62026D7F90E00EAA431 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD61F26D7F90E00EAA431 /* Constants.swift */; };
 		2E4AD62226D7FFD500EAA431 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD62126D7FFD500EAA431 /* LocationManager.swift */; };
 		2E4AD62A26D813BE00EAA431 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD62926D813BE00EAA431 /* ForecastViewController.swift */; };
+		2E4AD62C26D818E700EAA431 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD62B26D818E700EAA431 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		2E4AD61F26D7F90E00EAA431 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2E4AD62126D7FFD500EAA431 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2E4AD62926D813BE00EAA431 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
+		2E4AD62B26D818E700EAA431 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +72,7 @@
 		2E4AD5F926D7A33D00EAA431 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				2E4AD62426D8136000EAA431 /* Constants */,
+				2E4AD62426D8136000EAA431 /* Extensions */,
 				2E4AD62326D8134600EAA431 /* Manager */,
 				2E4AD61226D7A5FA00EAA431 /* TabBarController */,
 				2E4AD61526D7F0DF00EAA431 /* MainPage */,
@@ -144,12 +146,13 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		2E4AD62426D8136000EAA431 /* Constants */ = {
+		2E4AD62426D8136000EAA431 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				2E4AD61F26D7F90E00EAA431 /* Constants.swift */,
+				2E4AD62B26D818E700EAA431 /* UIView+Extensions.swift */,
 			);
-			path = Constants;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		2E4AD62526D8138700EAA431 /* ForecastPage */ = {
@@ -259,6 +262,7 @@
 				2E4AD5FF26D7A33D00EAA431 /* MainViewController.swift in Sources */,
 				2E4AD61926D7F14800EAA431 /* WeatherModel.swift in Sources */,
 				2E4AD61E26D7F85700EAA431 /* NetworkManager.swift in Sources */,
+				2E4AD62C26D818E700EAA431 /* UIView+Extensions.swift in Sources */,
 				2E4AD5FB26D7A33D00EAA431 /* AppDelegate.swift in Sources */,
 				2E4AD61426D7A61800EAA431 /* TabBarController.swift in Sources */,
 				2E4AD5FD26D7A33D00EAA431 /* SceneDelegate.swift in Sources */,
@@ -404,6 +408,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,7 +416,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.app.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -422,6 +427,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -429,7 +435,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.app.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
