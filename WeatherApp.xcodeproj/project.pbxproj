@@ -19,6 +19,7 @@
 		2E4AD61E26D7F85700EAA431 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD61D26D7F85700EAA431 /* NetworkManager.swift */; };
 		2E4AD62026D7F90E00EAA431 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD61F26D7F90E00EAA431 /* Constants.swift */; };
 		2E4AD62226D7FFD500EAA431 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD62126D7FFD500EAA431 /* LocationManager.swift */; };
+		2E4AD62A26D813BE00EAA431 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD62926D813BE00EAA431 /* ForecastViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		2E4AD61D26D7F85700EAA431 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2E4AD61F26D7F90E00EAA431 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2E4AD62126D7FFD500EAA431 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		2E4AD62926D813BE00EAA431 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +70,11 @@
 		2E4AD5F926D7A33D00EAA431 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				2E4AD62426D8136000EAA431 /* Constants */,
+				2E4AD62326D8134600EAA431 /* Manager */,
 				2E4AD61226D7A5FA00EAA431 /* TabBarController */,
 				2E4AD61526D7F0DF00EAA431 /* MainPage */,
+				2E4AD62526D8138700EAA431 /* ForecastPage */,
 				2E4AD60B26D7A35500EAA431 /* Info.plist */,
 				2E4AD60326D7A33D00EAA431 /* WeatherApp.xcdatamodeld */,
 				2E4AD61126D7A38800EAA431 /* Extra */,
@@ -102,7 +107,6 @@
 				2E4AD61C26D7F16C00EAA431 /* View */,
 				2E4AD61B26D7F15F00EAA431 /* Presenter */,
 				2E4AD61A26D7F14D00EAA431 /* Model */,
-				2E4AD61F26D7F90E00EAA431 /* Constants.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -111,8 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				2E4AD61826D7F14800EAA431 /* WeatherModel.swift */,
-				2E4AD61D26D7F85700EAA431 /* NetworkManager.swift */,
-				2E4AD62126D7FFD500EAA431 /* LocationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -129,6 +131,55 @@
 			isa = PBXGroup;
 			children = (
 				2E4AD5FE26D7A33D00EAA431 /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2E4AD62326D8134600EAA431 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				2E4AD61D26D7F85700EAA431 /* NetworkManager.swift */,
+				2E4AD62126D7FFD500EAA431 /* LocationManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		2E4AD62426D8136000EAA431 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2E4AD61F26D7F90E00EAA431 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		2E4AD62526D8138700EAA431 /* ForecastPage */ = {
+			isa = PBXGroup;
+			children = (
+				2E4AD62826D813AF00EAA431 /* View */,
+				2E4AD62726D813A400EAA431 /* Presenter */,
+				2E4AD62626D8139C00EAA431 /* Model */,
+			);
+			path = ForecastPage;
+			sourceTree = "<group>";
+		};
+		2E4AD62626D8139C00EAA431 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2E4AD62726D813A400EAA431 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		2E4AD62826D813AF00EAA431 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2E4AD62926D813BE00EAA431 /* ForecastViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,6 +263,7 @@
 				2E4AD61426D7A61800EAA431 /* TabBarController.swift in Sources */,
 				2E4AD5FD26D7A33D00EAA431 /* SceneDelegate.swift in Sources */,
 				2E4AD62026D7F90E00EAA431 /* Constants.swift in Sources */,
+				2E4AD62A26D813BE00EAA431 /* ForecastViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

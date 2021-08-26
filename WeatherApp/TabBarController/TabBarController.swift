@@ -19,14 +19,14 @@ class TabBarController: UITabBarController {
         super.viewWillAppear(animated)
         
         let mainVC = MainViewController()
-        let mainVCItem = UITabBarItem(title: "Main", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
+        let mainVCItem = UITabBarItem(title: "Main", image: UIImage(named: "thermostat"), selectedImage: UIImage(named: "thermostatSelected"))
         mainVC.tabBarItem = mainVCItem
         
-//        let mainVC = MainViewController()
-//        let mainVCIcon = UITabBarItem(title: "Main", image: UIImage(named: "someImage.png"), selectedImage: UIImage(named: "otherImage.png"))
-//        mainVC.tabBarItem = mainVCIcon
+        let forecastVC = ForecastViewController()
+        let forecastVCIcon = UITabBarItem(title: "Forecast", image: UIImage(named: "storm"), selectedImage: UIImage(named: "stormSelected"))
+        forecastVC.tabBarItem = forecastVCIcon
         
-        let controllers = [mainVC]
+        let controllers = [mainVC, forecastVC]
         
         self.viewControllers = controllers
     }
