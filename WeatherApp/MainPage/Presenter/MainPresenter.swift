@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MainPresenterOutput: NSObjectProtocol {
-    func setCurrentWeather(_ weather: WeatherModel)
+    func setCurrentWeather(_ weather: WeatherModel?)
     func setWeatherCondition(_ imageName: String)
     func setWeatherConditionText(_ text: String)
 }
@@ -34,9 +34,13 @@ class MainPresenter {
 extension MainPresenter: MainPresenterInput {
         
     func getCurrentWeatherByLocation() {
-        locationManager.getCurrentLocation = { [weak self] (latitude, longitude) in
-            self?.networkManager.getCurrentWeatherByLocation(latitude: latitude, longitude: longitude) { weather in
-                self?.controller.setCurrentWeather(weather)
+        locationManager.getCurrentLocation = { [weak self] (location) in
+            if let location = location {
+                self?.networkManager.getCurrentWeatherByLocation(latitude: location.latitude, longitude: location.longitude) { weather in
+                    self?.controller.setCurrentWeather(weather)
+                }
+            } else {
+                self?.controller.setCurrentWeather(nil)
             }
         }
     }

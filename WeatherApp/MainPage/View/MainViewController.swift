@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
     }()
     
     private lazy var containerStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [weatherConditionLabel, cityNameLabel, weatherCondtionImageView, temperatureLabel])
+        let stack = UIStackView(arrangedSubviews: [cityNameLabel, weatherConditionLabel, weatherCondtionImageView, temperatureLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.alignment = .fill
@@ -96,7 +96,8 @@ extension MainViewController {
             containerStack.topAnchor.constraint(greaterThanOrEqualTo: selectCityButton.bottomAnchor, constant: 16),
             containerStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             containerStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            containerStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32)
+            containerStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//            containerStack.bottomAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32)
         ])
     }
     
@@ -123,10 +124,16 @@ extension MainViewController {
 // MARK: - MainPresantable a protocolo to connect with Presenter
 extension MainViewController: MainPresenterOutput {
 
-    func setCurrentWeather(_ weather: WeatherModel) {
-        cityNameLabel.text = weather.name
-        temperatureLabel.text = "\(weather.main.temp) ℃"
-        presenter.getWeatherCondition(condition: weather.weather.first?.id ?? 0, temperature: weather.main.temp)
+    func setCurrentWeather(_ weather: WeatherModel?) {
+        if let weather = weather {
+            cityNameLabel.text = weather.name
+            temperatureLabel.text = "\(weather.main.temp) ℃"
+            presenter.getWeatherCondition(condition: weather.weather.first?.id ?? 0, temperature: weather.main.temp)
+        } else {
+            cityNameLabel.text = "Need Persmission!!!"
+            weatherConditionLabel.text = "Can't locate you!"
+            temperatureLabel.text = "Go to->Settings->Privacy->Location Services->Weather App"
+        }
     }
     
     func setWeatherCondition(_ imageName: String) {
