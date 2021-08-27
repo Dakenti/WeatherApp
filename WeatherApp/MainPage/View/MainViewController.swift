@@ -11,6 +11,7 @@ class MainViewController: UIViewController {
     
     private var presenter: MainPresenter!
     
+    // MARK: - UI Components Beginning
     private let backgoundImageView: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "mainPageBackground"))
         iv.contentMode = .scaleAspectFill
@@ -71,6 +72,7 @@ class MainViewController: UIViewController {
         label.textAlignment = .right
         return label
     }()
+    // MARK: - UI Components End
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,36 +106,34 @@ extension MainViewController {
     }
     
     @objc private func selectCityButtonPressed() {
-        let alert = UIAlertController(title: "Get Weather", message: "Type out City name and get Weather Condition", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Get Weather", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Enter City Name"
         }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
         alert.addAction(UIAlertAction(title: "Get", style: .default, handler: { [weak self] (_) in
             if let cityName = alert.textFields?[0].text {
                 self?.presenter.getCurrentWeatherByCityName(cityName: cityName)
             }
         }))
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
 }
 
 // MARK: - MainPresantable a protocolo to connect with Presenter
-extension MainViewController: MainPresanterOutput {
+extension MainViewController: MainPresenterOutput {
 
     func setCurrentWeather(_ weather: WeatherModel) {
         cityNameLabel.text = weather.name
         temperatureLabel.text = "\(weather.main.temp) ℃"
-        presenter.getWeatherCondition(condition: weather.weather.first?.id ?? 0)
-        presenter.getWeatherConditionText(temperature: weather.main.temp)
+        presenter.getWeatherCondition(condition: weather.weather.first?.id ?? 0, temperature: weather.main.temp)
     }
     
-    func setWeatherCondition(imageName: String) {
+    func setWeatherCondition(_ imageName: String) {
         weatherCondtionImageView.image = UIImage(named: imageName)
     }
     
-    func getWeatherConditionText(_ text: String) {
+    func setWeatherConditionText(_ text: String) {
         weatherConditionLabel.text = text
     }
 }
