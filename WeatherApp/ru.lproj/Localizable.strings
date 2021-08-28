@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  WeatherApp
+
+  Created by Ainur on 28.08.2021.
+  
+*/
+
+// TODO: 9 - Приложение должно быть максимально близко к production-состоянию.
+
+// Tab Bar
+"Main" = "Главная";
+"Forecast" = "Форекаст"; // не знаю как правильно перевести)
+
+// MainViewController
+"Need Persmission!!!" = "Нужно Разрешение!!!";
+"Can't locate you!" = "Не могу найти вас!";
+"Go to->Settings->Privacy->Location Services->Weather App" = "Перейдите в-> Настройки-> Конфиденциальность-> Службы геолокации-> Погода";
+"Get Weather" = "Получить погоду";
+"Enter City Name" = "Введите название города";
+"Cancel" = "Отмена";
+"Get" = "Да";
+"Loading..." = "Загрузка ...";
+
+// MainPresenter
+"it is storm!" = "это шторм! сиди дома!";
+"it is light rain!" = "это небольшой дождь!";
+"it is raining!" = "идет дождь!";
+"it is snowing!" = "идет снег!";
+"it is cold, brrr!" = "Холодно, бррр!";
+"I don't like it but it's OK outside." = "Мне не нравится эта погода, но на улице все в ОК";
+"Let's go outside and walk..." = "Пойдем на улицу, прогуляемся ...";

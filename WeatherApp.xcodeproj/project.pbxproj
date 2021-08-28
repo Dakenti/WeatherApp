@@ -21,7 +21,12 @@
 		2E4AD62226D7FFD500EAA431 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD62126D7FFD500EAA431 /* LocationManager.swift */; };
 		2E4AD62A26D813BE00EAA431 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD62926D813BE00EAA431 /* ForecastViewController.swift */; };
 		2E4AD62C26D818E700EAA431 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD62B26D818E700EAA431 /* UIView+Extensions.swift */; };
-		2E4AD62E26D898CD00EAA431 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD62D26D898CC00EAA431 /* LocationModel.swift */; };
+		2E4AD63026D8BF9000EAA431 /* ForecastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD62F26D8BF9000EAA431 /* ForecastPresenter.swift */; };
+		2E4AD63626D8DDE800EAA431 /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD63526D8DDE800EAA431 /* ForecastCell.swift */; };
+		2E4AD63926D8E83D00EAA431 /* ForecastEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD63826D8E83D00EAA431 /* ForecastEntity.swift */; };
+		2E4AD63B26D8E8D700EAA431 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4AD63A26D8E8D700EAA431 /* CoreDataManager.swift */; };
+		2E6EE48526D93150001077A0 /* ForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6EE48426D93150001077A0 /* ForecastModel.swift */; };
+		2E6EE48F26DA89F3001077A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E6EE49126DA89F3001077A0 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +46,12 @@
 		2E4AD62126D7FFD500EAA431 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2E4AD62926D813BE00EAA431 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 		2E4AD62B26D818E700EAA431 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		2E4AD62D26D898CC00EAA431 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		2E4AD62F26D8BF9000EAA431 /* ForecastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPresenter.swift; sourceTree = "<group>"; };
+		2E4AD63526D8DDE800EAA431 /* ForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
+		2E4AD63826D8E83D00EAA431 /* ForecastEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastEntity.swift; sourceTree = "<group>"; };
+		2E4AD63A26D8E8D700EAA431 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		2E6EE48426D93150001077A0 /* ForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastModel.swift; sourceTree = "<group>"; };
+		2E6EE49226DA8A1A001077A0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +89,9 @@
 				2E4AD61226D7A5FA00EAA431 /* TabBarController */,
 				2E4AD61526D7F0DF00EAA431 /* MainPage */,
 				2E4AD62526D8138700EAA431 /* ForecastPage */,
-				2E4AD60B26D7A35500EAA431 /* Info.plist */,
-				2E4AD60326D7A33D00EAA431 /* WeatherApp.xcdatamodeld */,
 				2E4AD61126D7A38800EAA431 /* Extra */,
+				2E4AD60B26D7A35500EAA431 /* Info.plist */,
+				2E6EE49126DA89F3001077A0 /* Localizable.strings */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -119,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				2E4AD61826D7F14800EAA431 /* WeatherModel.swift */,
-				2E4AD62D26D898CC00EAA431 /* LocationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,6 +152,7 @@
 		2E4AD62326D8134600EAA431 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				2E4AD63726D8E80700EAA431 /* CoreDataManager */,
 				2E4AD61D26D7F85700EAA431 /* NetworkManager.swift */,
 				2E4AD62126D7FFD500EAA431 /* LocationManager.swift */,
 			);
@@ -171,6 +181,7 @@
 		2E4AD62626D8139C00EAA431 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2E6EE48426D93150001077A0 /* ForecastModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,6 +189,7 @@
 		2E4AD62726D813A400EAA431 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				2E4AD62F26D8BF9000EAA431 /* ForecastPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -186,8 +198,19 @@
 			isa = PBXGroup;
 			children = (
 				2E4AD62926D813BE00EAA431 /* ForecastViewController.swift */,
+				2E4AD63526D8DDE800EAA431 /* ForecastCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2E4AD63726D8E80700EAA431 /* CoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				2E4AD60326D7A33D00EAA431 /* WeatherApp.xcdatamodeld */,
+				2E4AD63826D8E83D00EAA431 /* ForecastEntity.swift */,
+				2E4AD63A26D8E8D700EAA431 /* CoreDataManager.swift */,
+			);
+			path = CoreDataManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +254,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 2E4AD5EE26D7A33D00EAA431;
 			productRefGroup = 2E4AD5F826D7A33D00EAA431 /* Products */;
@@ -248,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E4AD60A26D7A35500EAA431 /* LaunchScreen.storyboard in Resources */,
+				2E6EE48F26DA89F3001077A0 /* Localizable.strings in Resources */,
 				2E4AD60726D7A35500EAA431 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,7 +285,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E4AD60526D7A33E00EAA431 /* WeatherApp.xcdatamodeld in Sources */,
+				2E4AD63026D8BF9000EAA431 /* ForecastPresenter.swift in Sources */,
 				2E4AD61726D7F13A00EAA431 /* MainPresenter.swift in Sources */,
+				2E4AD63926D8E83D00EAA431 /* ForecastEntity.swift in Sources */,
+				2E6EE48526D93150001077A0 /* ForecastModel.swift in Sources */,
+				2E4AD63B26D8E8D700EAA431 /* CoreDataManager.swift in Sources */,
 				2E4AD62226D7FFD500EAA431 /* LocationManager.swift in Sources */,
 				2E4AD5FF26D7A33D00EAA431 /* MainViewController.swift in Sources */,
 				2E4AD61926D7F14800EAA431 /* WeatherModel.swift in Sources */,
@@ -268,8 +297,8 @@
 				2E4AD62C26D818E700EAA431 /* UIView+Extensions.swift in Sources */,
 				2E4AD5FB26D7A33D00EAA431 /* AppDelegate.swift in Sources */,
 				2E4AD61426D7A61800EAA431 /* TabBarController.swift in Sources */,
+				2E4AD63626D8DDE800EAA431 /* ForecastCell.swift in Sources */,
 				2E4AD5FD26D7A33D00EAA431 /* SceneDelegate.swift in Sources */,
-				2E4AD62E26D898CD00EAA431 /* LocationModel.swift in Sources */,
 				2E4AD62026D7F90E00EAA431 /* Constants.swift in Sources */,
 				2E4AD62A26D813BE00EAA431 /* ForecastViewController.swift in Sources */,
 			);
@@ -286,6 +315,14 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		2E6EE49126DA89F3001077A0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E6EE49226DA8A1A001077A0 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -293,6 +330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -354,6 +392,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

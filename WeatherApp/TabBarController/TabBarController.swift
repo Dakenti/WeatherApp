@@ -7,6 +7,7 @@
 
 import UIKit
 
+// TODO: 2.a - Таб бар
 class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
@@ -20,11 +21,11 @@ class TabBarController: UITabBarController {
         super.viewWillAppear(animated)
         
         let mainVC = MainViewController()
-        let mainVCItem = UITabBarItem(title: "Main", image: UIImage(named: "thermostat"), selectedImage: UIImage(named: "thermostatSelected"))
+        let mainVCItem = UITabBarItem(title: NSLocalizedString("Main", comment: ""), image: UIImage(named: "thermostat"), selectedImage: UIImage(named: "thermostatSelected"))
         mainVC.tabBarItem = mainVCItem
         
         let forecastVC = ForecastViewController()
-        let forecastVCIcon = UITabBarItem(title: "Forecast", image: UIImage(named: "storm"), selectedImage: UIImage(named: "stormSelected"))
+        let forecastVCIcon = UITabBarItem(title: NSLocalizedString("Forecast", comment: ""), image: UIImage(named: "storm"), selectedImage: UIImage(named: "stormSelected"))
         forecastVC.tabBarItem = forecastVCIcon
         
         let controllers = [mainVC, forecastVC]

@@ -14,7 +14,7 @@ final class LocationManager: NSObject {
     
     private let locationManager = CLLocationManager()
     
-    public var getCurrentLocation: ((LocationModel?)->(Void))?
+    public var getCurrentLocation: ((WeatherModel.Coordinate?)->(Void))?
     
     private override init() {
         super.init()
@@ -31,7 +31,7 @@ extension LocationManager: CLLocationManagerDelegate {
         let location = locations[locations.count - 1]
         if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
-            getCurrentLocation?(LocationModel(latitude: "\(location.coordinate.latitude)", longitude: "\(location.coordinate.longitude)"))
+            getCurrentLocation?(WeatherModel.Coordinate(lat: location.coordinate.latitude, lon: location.coordinate.longitude))
         }
     }
     

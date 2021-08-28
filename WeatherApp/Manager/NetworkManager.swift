@@ -12,29 +12,51 @@ final class NetworkManager {
     static let shared = NetworkManager()
     
     private init() {}
+}
+
+// MARK: - Public API
+extension NetworkManager {
     
-    func getCurrentWeatherByLocation(latitude: String, longitude: String, _ complition: @escaping (WeatherModel) -> (Void)) {
+    func getCurrentWeatherByLocation(latitude: String, longitude: String, _ complition: @escaping (WeatherModel?) -> (Void)) {
         let urlQueryItems = [
             URLQueryItem(name: "lat", value: latitude),
             URLQueryItem(name: "lon", value: longitude)
         ]
-        getCurrentWeather(urlQueryItems: urlQueryItems, complition)
+        getCurrentWeather(urlString: Constants.weatherMain, urlQueryItems: urlQueryItems, model: WeatherModel.self, complition)
     }
     
-    func getCurrentWeatherByCityName(cityName: String, _ complition: @escaping (WeatherModel) -> (Void)) {
+    func getCurrentWeatherByCityName(cityName: String, _ complition: @escaping (WeatherModel?) -> (Void)) {
         let urlQueryItems = [
             URLQueryItem(name: "q", value: cityName)
         ]
-        getCurrentWeather(urlQueryItems: urlQueryItems, complition)
+        getCurrentWeather(urlString: Constants.weatherMain, urlQueryItems: urlQueryItems, model: WeatherModel.self, complition)
     }
     
-    func getCurrentWeather(urlQueryItems: [URLQueryItem], _ complition: @escaping (WeatherModel) -> (Void)) {
-        var urlComponents = URLComponents(string: Constants.weatherMain)
-        urlComponents?.queryItems = [
+    func getCurrentWeatherForecast(latitude: String, longitude: String, _ complition: @escaping (ForecastModel?) -> (Void)) {
+        let urlQueryItems = [
+            URLQueryItem(name: "lat", value: latitude),
+            URLQueryItem(name: "lon", value: longitude),
+            URLQueryItem(name: "exclude", value: "hourly"),
             URLQueryItem(name: "appid", value: Constants.apiKey),
             URLQueryItem(name: "units", value: "metric")
         ]
+        getCurrentWeather(urlString: Constants.weatherForecast, urlQueryItems: urlQueryItems, model: ForecastModel.self, complition)
+    }
+}
+
+// MARK: - Internal Private Methods
+extension NetworkManager {
+    
+    private func getCurrentWeather<T: Decodable>(urlString: String, urlQueryItems: [URLQueryItem], model: T.Type, _ complition: @escaping (T?) -> (Void)) {
+        guard let localLang = Bundle.main.preferredLocalizations.first?.prefix(2) else { return }
         
+        var urlComponents = URLComponents(string: urlString)
+        urlComponents?.queryItems = [
+            URLQueryItem(name: "appid", value: Constants.apiKey),
+            URLQueryItem(name: "units", value: "metric"),
+            URLQueryItem(name: "lang", value: String(localLang))
+        ]
+        print(String(localLang))
         urlComponents?.queryItems! += urlQueryItems
         
         if let url = urlComponents?.url?.absoluteURL {
@@ -42,13 +64,17 @@ final class NetworkManager {
                 if error == nil {
                     do {
                         if let data = data {
-                            let weatherData = try JSONDecoder().decode(WeatherModel.self, from: data)
+                            let response = try JSONDecoder().decode(model.self, from: data)
                             DispatchQueue.main.async {
-                                complition(weatherData)
+                                complition(response)
                             }
                         }
                     } catch {
                         print(error)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        complition(nil)
                     }
                 }
             }.resume()

@@ -48,7 +48,7 @@ class MainViewController: UIViewController {
     private let cityNameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Loading..."
+        label.text = NSLocalizedString("Loading...", comment: "")
         label.font = UIFont.systemFont(ofSize: 42, weight: .semibold)
         label.textColor = .white
         label.textAlignment = .left
@@ -78,6 +78,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         configureViews()
+        // TODO: 1 - Запрос разрешения отслеживать местоположение пользователя
         getCurrentWeather()
     }
 }
@@ -97,7 +98,6 @@ extension MainViewController {
             containerStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             containerStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             containerStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            containerStack.bottomAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32)
         ])
     }
     
@@ -106,13 +106,14 @@ extension MainViewController {
         presenter.getCurrentWeatherByLocation()
     }
     
+    // TODO: 3 - Возможность изменения населенного пункта
     @objc private func selectCityButtonPressed() {
-        let alert = UIAlertController(title: "Get Weather", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Get Weather", comment: ""), message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
-            textField.placeholder = "Enter City Name"
+            textField.placeholder = NSLocalizedString("Enter City Name", comment: "")
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
-        alert.addAction(UIAlertAction(title: "Get", style: .default, handler: { [weak self] (_) in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Get", comment: ""), style: .default, handler: { [weak self] (_) in
             if let cityName = alert.textFields?[0].text {
                 self?.presenter.getCurrentWeatherByCityName(cityName: cityName)
             }
@@ -130,9 +131,10 @@ extension MainViewController: MainPresenterOutput {
             temperatureLabel.text = "\(weather.main.temp) ℃"
             presenter.getWeatherCondition(condition: weather.weather.first?.id ?? 0, temperature: weather.main.temp)
         } else {
-            cityNameLabel.text = "Need Persmission!!!"
-            weatherConditionLabel.text = "Can't locate you!"
-            temperatureLabel.text = "Go to->Settings->Privacy->Location Services->Weather App"
+            // TODO: 4 - Обработка состояния, когда пользователь запретил доступ к местоположению
+            cityNameLabel.text = NSLocalizedString("Need Persmission!!!", comment: "")
+            weatherConditionLabel.text = NSLocalizedString("Can't locate you!", comment: "")
+            temperatureLabel.text = NSLocalizedString("Go to->Settings->Privacy->Location Services->Weather App", comment: "")
         }
     }
     
